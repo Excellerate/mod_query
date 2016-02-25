@@ -1,3 +1,8 @@
+<?php if($showHeading) : ?>
+<h3 class="ui devided header" style="margin-top:-15px;"><?= $heading; ?>
+    <div class="ui sub header"><?= $subHeading; ?></div>
+</h3>
+<?php endif; ?>
 <form class="ui query form" action="<?php print Juri::current();?>" method="post">
     
     <div class="field">
