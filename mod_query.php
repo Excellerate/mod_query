@@ -74,7 +74,7 @@ if($post = JRequest::getVar('query', false, 'post')){
         print '<div class="ui message"><i class="ui circular checkmark icon"></i>Sent successfully, we will be in touch.</div>';
 
         // Message
-        JFactory::getApplication()->enqueueMessage('Please check that all required fields have been completed.', 'success');
+        //JFactory::getApplication()->enqueueMessage('Please check that all required fields have been completed.', 'success');
     }
 
 }
