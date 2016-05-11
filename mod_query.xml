@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.1.0" client="site" method="upgrade">
     <name>Web Query Form</name>
-    <author>codeChap</author>
+    <author>CodeChap</author>
     <version>1.0.0</version>
     <description>A simple web query contact module.</description>
     <files>
@@ -20,10 +20,14 @@
             <fieldset name="basic">
                 <field name="template" label="Template" type="editor" width="300" filter="safehtml" required="true" default="{{ form }}" />
             </fieldset>
+            <fieldset name="settings" label="Settings">
+                <field name="heading" label="Module heading" type="text" required="false" default="" />
+                <field name="subheading" label="Module sub heading" type="text" required="false" default="" />
+            </fieldset>
             <fieldset name="fields" label="Fields">
-                <field name="suburb" label="Request Suburb" type="checkbox" required="false" default="1" />
-                <field name="province" label="Request Province" type="checkbox" required="false" default="1" />
-                <field name="message" label="Request Message" type="checkbox" required="false" default="1" />
+                <field name="suburb" label="Request Suburb" type="checkbox" required="false" default="0" />
+                <field name="province" label="Request Province" type="checkbox" required="false" default="0" />
+                <field name="message" label="Request Message" type="checkbox" required="false" default="0" />
                 <field name="buysell" label="Request buy or sell" type="checkbox" required="false" default="0" />
             </fieldset>
             <fieldset name="emails" label="Email Settings">
@@ -38,6 +42,7 @@
                 <field name="bcc_b" type="email" label="Bcc" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="false" size="30" class="inputbox" validate="email" />
                 <field name="bcc_c" type="email" label="Bcc" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="false" size="30" class="inputbox" validate="email" />
             </fieldset>
+
         </fields>
     </config>
     <updateservers>

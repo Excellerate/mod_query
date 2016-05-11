@@ -29,6 +29,11 @@ $showProvince = $params->get('province', false);
 $showMessage = $params->get('message', false);
 $showBuySell = $params->get('buysell', false);
 
+if($showHeading = $params->get('heading')){
+    $heading = $params->get('heading', false);
+    $subHeading = $params->get('subheading', false);
+}
+
 // Check for post data
 if($post = JRequest::getVar('query', false, 'post')){
 
