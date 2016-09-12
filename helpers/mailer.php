@@ -2,20 +2,19 @@
 
     class QueryHelperMailer{
 
-        static function send($tos, $ccs, $bccs, $subject, $data){
+        static function send($params, $post){
 
             // We dont need the following
-            unset($data['birthday'], $data['token']);
+            unset($post['birthday'], $post['token']);
 
             // Clean up
-            $tos = array_filter($tos);
-            $ccs = array_filter($ccs);
-            $bccs = array_filter($bccs);
+            $to = $params->get('to_a');
+            $subject = $params->get('subject');
 
             // Build up body
-            if(is_array($data)){
+            if(is_array($post)){
 
-                foreach($data as $key => $value){
+                foreach($post as $key => $value){
                     if($key !== "message"){
                         $body[] = "<u>".ucwords(str_replace("_", " ", $key)) . "</u>: " . $value;
                     }
@@ -32,28 +31,22 @@
                 throw new Excetion("Array expected");
             }
 
-            // App
-            $app        = JFactory::getApplication();
-            $mailfrom   = trim($data['email']);
-            $fromname   = (isset($data['name']) and !empty($data['name'])) ? $data['name'] : false;
-            $sitename   = $app->getCfg('sitename');
-
             // Mail it
-            $mail = JFactory::getMailer();
-            $mail->isHTML(true);
-            $mail->addRecipient($tos);
-            $mail->AddCC($ccs);
-            $mail->AddBCC($bccs);
-            $mail->setSender(array($mailfrom, $fromname));
-            $mail->setSubject($sitename.': '.$subject);
-            $mail->setBody("<h4>The following information has been submitted from the " . $sitename . " website</h4>" . $body);
+            $app        = JFactory::getApplication();
+            $mailfrom   = trim($post['email']);
+            $fromname   = (isset($post['name']) and !empty($post['name'])) ? $post['name'] : false;
+            $sitename   = $app->getCfg('sitename');
+            $htmlBody = "<h4>The following information has been submitted from the " . $sitename . " website</h4>" . $body;
+            $textBody = strip_tags($htmlBody);
+            
+            // Set mailgun settings
+            $mailGunSettings = array(
+                'domain' => $params->get('domain'),
+                'key' => $params->get('key')
+              );
 
-            // Send it
-            if( ! $mail->Send() ){
-                return false;
-            }
-            else{
-                return true;
-            }
+            // Use Mailgun instead
+            $execString = "curl -s --user 'api:".$mailGunSettings['key']."' https://api.mailgun.net/v3/".$mailGunSettings['domain']."/messages -F from='".$mailfrom."' -F to='".$to."' -F subject='".$subject."' -F text='".$textBody."' --form-string html='".$htmlBody."'";
+            $r = shell_exec($execString);
         }
     }

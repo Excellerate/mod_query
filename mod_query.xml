@@ -18,11 +18,11 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
-                <field name="template" label="Template" type="editor" width="300" filter="safehtml" required="true" default="{{ form }}" />
-            </fieldset>
-            <fieldset name="settings" label="Settings">
+                <field name="domain" type="text" label="Mailgun Domain" description="" required="true" size="30" class="inputbox" filter="raw" />
+                <field name="key" type="text" label="Mailgun Key" description="" required="true" size="30" class="inputbox" filter="raw" />
                 <field name="heading" label="Module heading" type="text" required="false" default="" />
                 <field name="subheading" label="Module sub heading" type="text" required="false" default="" />
+                <field name="template" label="Template" type="editor" width="300" filter="safehtml" required="true" default="{{ form }}" />
             </fieldset>
             <fieldset name="fields" label="Fields">
                 <field name="suburb" label="Request Suburb" type="checkbox" required="false" default="0" />
@@ -33,14 +33,9 @@
             <fieldset name="emails" label="Email Settings">
                 <field name="subject" type="text" label="Subject" description="Subject line to use in the email" required="true" size="30" class="inputbox" />
                 <field name="to_a" type="email" label="To" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="true" size="30" class="inputbox" validate="email" />
-                <field name="to_b" type="email" label="To" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="false" size="30" class="inputbox" validate="email" />
-                <field name="to_c" type="email" label="To" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="false" size="30" class="inputbox" validate="email" />
-                <field name="cc_a" type="email" label="Cc" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="false" size="30" class="inputbox" validate="email" />
-                <field name="cc_b" type="email" label="Cc" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="false" size="30" class="inputbox" validate="email" />
-                <field name="cc_c" type="email" label="Cc" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="false" size="30" class="inputbox" validate="email" />
-                <field name="bcc_a" type="email" label="Bcc" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="false" size="30" class="inputbox" validate="email" />
-                <field name="bcc_b" type="email" label="Bcc" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="false" size="30" class="inputbox" validate="email" />
-                <field name="bcc_c" type="email" label="Bcc" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="false" size="30" class="inputbox" validate="email" />
+            </fieldset>
+            <fieldset name="mailgun" label="Mailgun Settings">
+                
             </fieldset>
 
         </fields>

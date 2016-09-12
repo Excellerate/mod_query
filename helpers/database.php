@@ -1,6 +1,6 @@
 <?php
 
-    class QueryHelperDb{
+    class QueryHelperDatabase{
 
         static function save($data){
 
