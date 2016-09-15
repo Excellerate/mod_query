@@ -48,17 +48,18 @@ if($post = JRequest::getVar('query', false, 'post')){
     $result = $val->run($post);
     if($result->isValid()){
 
-        // Save data
-        QueryHelperDatabase::save($post);
+        // Save data and check token
+        if(QueryHelperDatabase::save($post)){
 
-        // Email data
-        QueryHelperMailer::send($params, $post);
+            // Email data
+            QueryHelperMailer::send($params, $post);
 
-        // We done
-        print '<div class="ui message"><i class="ui circular checkmark icon"></i>Sent successfully, we will be in touch.</div>';
+            // We done
+            print '<div class="ui message"><i class="ui circular checkmark icon"></i>Sent successfully, we will be in touch.</div>';
 
-        // Dont show the formn
-        return null;
+            // Dont show the formn
+            return null;
+        }
 
         // Message
         //JFactory::getApplication()->enqueueMessage('Please check that all required fields have been completed.', 'success');

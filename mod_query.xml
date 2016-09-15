@@ -34,10 +34,6 @@
                 <field name="subject" type="text" label="Subject" description="Subject line to use in the email" required="true" size="30" class="inputbox" />
                 <field name="to_a" type="email" label="To" description="COM_ADMIN_USER_FIELD_EMAIL_DESC" required="true" size="30" class="inputbox" validate="email" />
             </fieldset>
-            <fieldset name="mailgun" label="Mailgun Settings">
-                
-            </fieldset>
-
         </fields>
     </config>
     <updateservers>

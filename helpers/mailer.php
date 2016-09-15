@@ -36,8 +36,8 @@
             $mailfrom   = trim($post['email']);
             $fromname   = (isset($post['name']) and !empty($post['name'])) ? $post['name'] : false;
             $sitename   = $app->getCfg('sitename');
-            $htmlBody = "<h4>The following information has been submitted from the " . $sitename . " website</h4>" . $body;
-            $textBody = strip_tags($htmlBody);
+            $htmlBody   = "<h4>The following information has been submitted from the " . $sitename . " website</h4>" . $body;
+            $textBody   = strip_tags($htmlBody);
             
             // Set mailgun settings
             $mailGunSettings = array(
