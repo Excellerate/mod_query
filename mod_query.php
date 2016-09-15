@@ -71,4 +71,5 @@ ob_start();
     require JModuleHelper::getLayoutPath('mod_query', 'default');
     $get = ob_get_contents();
 ob_end_clean();
+
 print preg_replace("({{ ?form ?}})", $get, $params->get('template'));

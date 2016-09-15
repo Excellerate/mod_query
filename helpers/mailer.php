@@ -8,7 +8,9 @@
             unset($post['birthday'], $post['token']);
 
             // Clean up
-            $to = $params->get('to_a');
+            $to  = $params->get('to_a');
+            $cc  = $params->get('cc_a');
+            $bcc = $params->get('bcc_a');
             $subject = $params->get('subject');
 
             // Build up body
@@ -46,7 +48,9 @@
               );
 
             // Use Mailgun instead
-            $execString = "curl -s --user 'api:".$mailGunSettings['key']."' https://api.mailgun.net/v3/".$mailGunSettings['domain']."/messages -F from='".$mailfrom."' -F to='".$to."' -F subject='".$subject."' -F text='".$textBody."' --form-string html='".$htmlBody."'";
+            $fcc  = !empty($cc) ? "-F cc='".$cc."'" : false;
+            $fbcc = !empty($bcc) ? "-F bcc='".$bcc."'" : false;
+            $execString = "curl -s --user 'api:".$mailGunSettings['key']."' https://api.mailgun.net/v3/".$mailGunSettings['domain']."/messages -F from='".$mailfrom."' -F to='".$to."' ".$fcc." ".$fbcc." -F subject='".$subject."' -F text='".$textBody."' --form-string html='".$htmlBody."'";
             $r = shell_exec($execString);
         }
     }
