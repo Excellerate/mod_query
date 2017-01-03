@@ -14,8 +14,8 @@
 defined('_JEXEC') or die;
  
 // Load helpers
-include 'helpers/database.php';
-include 'helpers/mailer.php';
+include_once 'helpers/database.php';
+include_once 'helpers/mailer.php';
 
 // Gather FuelPHP
 use Fuel\Validation\Validator;
