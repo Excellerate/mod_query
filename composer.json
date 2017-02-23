@@ -1,0 +1,8 @@
+{
+  "name": "excellerate/mod_query",
+  "type": "joomla-module",
+  "description": "Excellerate web query module",
+  "require": {
+    "composer/installers": "*"
+  }
+}
