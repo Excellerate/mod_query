@@ -25,6 +25,7 @@ $showSuburb = $params->get('suburb', false);
 $showProvince = $params->get('province', false);
 $showMessage = $params->get('message', false);
 $showBuySell = $params->get('buysell', false);
+$requestSpecial = $params->get('special', false);
 
 if($showHeading = $params->get('heading')){
     $heading = $params->get('heading', false);
