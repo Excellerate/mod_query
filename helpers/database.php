@@ -25,6 +25,7 @@
                         `province` varchar(220) DEFAULT NULL,
                         `message` varchar(220) DEFAULT NULL,
                         `buysell` varchar(220) DEFAULT NULL,
+                        `special` varchar(220) DEFAULT NULL,
                         `token` varchar(32) NOT NULL,
                         `ip` varchar(11) NOT NULL,
                         `created_at` datetime NOT NULL,
@@ -49,7 +50,7 @@
              // Record the data
             if(count($results) == 0){
                 $query = $db->getQuery(true);
-                $columns = array('name', 'number', 'email', 'suburb', 'province', 'message', 'buysell', 'token', 'ip', 'created_at', 'updated_at');
+                $columns = array('name', 'number', 'email', 'suburb', 'province', 'message', 'buysell', 'special', 'token', 'ip', 'created_at', 'updated_at');
                 $values = array(
                     (isset($data['name']) ? $db->quote($data['name']) : "NULL"),
                     (isset($data['number']) ? $db->quote($data['number']) : "NULL"),
@@ -58,6 +59,7 @@
                     (isset($data['province']) ? $db->quote($data['province']) : "NULL"),
                     (isset($data['message']) ? $db->quote($data['message']) : "NULL"),
                     (isset($data['buysell']) ? $db->quote($data['buysell']) : "NULL"),
+                    (isset($data['special']) ? $db->quote($data['special']) : "NULL"),
                     $db->quote($data['token']),
                     $db->quote($_SERVER['REMOTE_ADDR']),
                     $db->quote(date('Y-m-d H:i:s', time())),

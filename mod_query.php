@@ -32,6 +32,14 @@ if($showHeading = $params->get('heading')){
     $subHeading = $params->get('subheading', false);
 }
 
+// Find article header
+$articleTitle = false;
+$input = JFactory::getApplication()->input;
+$id = $input->getInt('id');
+$article = JTable::getInstance('content');
+$article->load($id);
+$articleTitle = $article->get('title');
+
 // Check for post data
 if($post = JRequest::getVar('query', false, 'post')){
 

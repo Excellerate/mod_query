@@ -5,26 +5,31 @@
 <?php endif; ?>
 <form class="ui query form" action="<?php print Juri::current();?>" method="post">
     
-    <div class="field">
-        <input type="text" name="query[name]" placeholder="Full name">
+    <div class="required field">
+        <label>Full name:</label>
+        <input type="text" name="query[name]" placeholder="Full name...">
     </div>
     
-    <div class="field">
-        <input type="text" name="query[number]" placeholder="Phone number">
+    <div class="required field">
+        <label>Phone Number:</label>
+        <input type="text" name="query[number]" placeholder="Phone number...">
     </div>
 
-    <div class="field">
-        <input type="email" name="query[email]" placeholder="Email address">
+    <div class="required field">
+        <label>Email address:</label>
+        <input type="email" name="query[email]" placeholder="Email address...">
     </div>
 
     <?php if($showSuburb) : ?>
-    <div class="field">
-        <input type="email" name="query[suburb]" placeholder="Enter a suburb name">
+    <div class="required field">
+        <label>Suburb:</label>
+        <input type="email" name="query[suburb]" placeholder="Enter a suburb name...">
     </div>
     <?php endif; ?>
 
     <?php if($showProvince) : ?>
-    <div class="field">
+    <div class="required field">
+        <label>Province:</label>
         <div id="suburbs" class="ui fluid selection dropdown">
             <input type="hidden" name="query[province]">
             <div class="default text">Province</div>
@@ -58,6 +63,13 @@
                 <div class="item" data-value="selling">Selling</div>
             </div>
         </div>
+    </div>
+    <?php endif; ?>
+
+    <?php if($requestSpecial) : ?>
+    <div class="field">
+        <label>Special interested in:</label>
+        <input type="email" name="query[special]" value="<?= $articleTitle ? : null; ?>" placeholder="Special...">
     </div>
     <?php endif; ?>
     

@@ -29,6 +29,7 @@
                 <field name="province" label="Request Province" type="checkbox" required="false" default="0" />
                 <field name="message" label="Request Message" type="checkbox" required="false" default="0" />
                 <field name="buysell" label="Request buy or sell" type="checkbox" required="false" default="0" />
+                <field name="special" label="Request special" type="checkbox" required="false" default="0" />
             </fieldset>
             <fieldset name="emails" label="Email Settings">
                 <field name="subject" type="text" label="Subject" description="Subject line to use in the email" required="true" size="30" class="inputbox" />
